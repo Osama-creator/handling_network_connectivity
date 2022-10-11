@@ -57,7 +57,7 @@ class HomeController extends GetxController {
         connectionType = 1;
         update();
         break;
-      case ConnectivityResult.ethernet:
+      case ConnectivityResult.mobile:
         connectionType = 2;
         update();
         break;
