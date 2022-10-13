@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:handling_network_connectivity/app/helper/auth_maneger.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
+
+  AuthenticationManager _authManager = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+        title: Text('Home'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                _authManager.logOut();
+              },
+              icon: Icon(Icons.logout_rounded))
+        ],
       ),
       body: Center(
-        child: GetBuilder<HomeController>(
-            builder: (builder) => Text(
-                  (controller.connectionType == 0)
-                      ? 'No Internet'
-                      : (controller.connectionType == 1)
-                          ? 'You are Connected to Wifi'
-                          : 'You are Connected to Mobile Internet',
-                  style: TextStyle(fontSize: 30),
-                )),
+        child: Text('HOME VIEW'),
       ),
     );
   }
