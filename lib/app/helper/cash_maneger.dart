@@ -1,26 +1,19 @@
-// import 'package:auth_manager/core/cache_manager.dart';
-// import 'package:get/get_state_manager/get_state_manager.dart';
-// import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-// class AuthenticationManager extends GetxController with CacheManager {
-//   final isLogged = false.obs;
+enum CacheManagerKey { TOKEN }
 
-//   void logOut() {
-//     isLogged.value = false;
-//     removeToken();
-//   }
+mixin CachManeger {
+  final box = GetStorage();
+  Future<bool> saveToken(String? token) async {
+    await box.write(CacheManagerKey.TOKEN.toString(), token);
+    return true;
+  }
 
-//   void login(String? token) async {
-//     isLogged.value = true;
-//     //Token is cached
-//     await saveToken(token);
-//   }
+  String? getToken() {
+    return box.read(CacheManagerKey.TOKEN.toString());
+  }
 
-//   void checkLoginStatus() {
-//     final token = getToken();
-//     if (token != null) {
-//       isLogged.value = true;
-//     }
-//   }
-// }
-
+  Future<void> removeToken() async {
+    await box.remove(CacheManagerKey.TOKEN.toString());
+  }
+}
