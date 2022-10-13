@@ -9,6 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   connectivity_plus: ^2.3.9
   get: 4.6.5
+  get_storage: ^2.0.3
   flutter: 
     sdk: flutter
 
