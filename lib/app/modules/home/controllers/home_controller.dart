@@ -31,26 +31,6 @@ class HomeController extends GetxController {
     }
     return _updateState(connectivityResult);
   }
-
-  // _updateState(ConnectivityResult result)
-  //  {
-  //    switch(result)
-  //    {
-  //      case ConnectivityResult.wifi:
-  //              connectionType=1;
-  //              update();
-  //              break;
-  //      case ConnectivityResult.mobile:
-  //        connectionType=2;
-  //        update();
-  //        break;
-  //      case ConnectivityResult.none:
-  //        connectionType=0;
-  //        update();
-  //        break;
-  //      default: Get.snackbar('Network Error', 'Failed to get Network Status');
-  //      break;
-  //    }
   _updateState(ConnectivityResult result) {
     switch (result) {
       case ConnectivityResult.wifi:
